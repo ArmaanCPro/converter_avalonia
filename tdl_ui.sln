@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tdl_ui", "tdl_ui\tdl_ui.csproj", "{8E31B72E-78FA-46A6-A0C4-AE06C41D4F7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E31B72E-78FA-46A6-A0C4-AE06C41D4F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E31B72E-78FA-46A6-A0C4-AE06C41D4F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E31B72E-78FA-46A6-A0C4-AE06C41D4F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E31B72E-78FA-46A6-A0C4-AE06C41D4F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
