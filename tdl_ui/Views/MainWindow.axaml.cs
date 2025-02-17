@@ -12,21 +12,30 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    private void Celsius_OnTextChanged(object? sender, TextChangedEventArgs e)
     {
-        Debug.WriteLine($"Click! Celsius={Celsius.Text}");
-        double C;
-        double F;
-        
-        if (double.TryParse(Celsius.Text, out C))
+        if (double.TryParse(Celsius.Text, out double C))
         {
-            F = C * 9 / 5 + 32;
+            double F = C * 9d / 5d + 32;
+
+            // Temporarily detach the Fahrenheit TextChanged handler to avoid recursion
+            Fahrenheit.TextChanged -= Fahrenheit_OnTextChanged;
             Fahrenheit.Text = F.ToString("0.0");
-        }
-        else
-        {
-            Celsius.Text = "0";
-            Fahrenheit.Text = "0";
+            Fahrenheit.TextChanged += Fahrenheit_OnTextChanged;
         }
     }
+
+    private void Fahrenheit_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        if (double.TryParse(Fahrenheit.Text, out double F))
+        {
+            double C = (F - 32) * 5d / 9d;
+
+            // Temporarily detach the Celsius TextChanged handler to avoid recursion
+            Celsius.TextChanged -= Celsius_OnTextChanged;
+            Celsius.Text = C.ToString("0.0");
+            Celsius.TextChanged += Celsius_OnTextChanged;
+        }
+    }
+
 }

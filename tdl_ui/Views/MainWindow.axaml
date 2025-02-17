@@ -7,7 +7,7 @@
         x:Class="tdl_ui.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="tdl_ui"
+        Title="Temp Converter"
         Width="400"
         Height="450">
 
@@ -22,18 +22,17 @@
         <Border Margin="5" CornerRadius="4" Background="LightCoral">
             <TextBlock Margin="5" FontSize="24" Text="Temperature Converter" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
+        
         <Grid ShowGridLines="False" Margin="5"
               ColumnDefinitions="120, 100"
               RowDefinitions="Auto, Auto, Auto">
             <Label Grid.Row="0" Grid.Column="0" Margin="10">Celsius</Label>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Name="Celsius" Text="0"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" 
+                     Name="Celsius" Text="0" TextChanged="Celsius_OnTextChanged"/>
             <Label Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</Label>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="Fahrenheit" Text="0" IsReadOnly="True"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" 
+                     Name="Fahrenheit" Text="0" IsReadOnly="False" TextChanged="Fahrenheit_OnTextChanged"/>
             
-            <Button Grid.Row="2" Grid.Column="1" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Margin="0 5"
-                    Click="Button_OnClick">Calculate</Button>
         </Grid>
     </StackPanel>
 
