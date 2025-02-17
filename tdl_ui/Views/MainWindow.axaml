@@ -3,11 +3,13 @@
         xmlns:vm="using:tdl_ui.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
         x:Class="tdl_ui.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="tdl_ui">
+        Title="tdl_ui"
+        Width="400"
+        Height="450">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,9 +17,24 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="{Binding AddedText}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel HorizontalAlignment="Center">
+        
+        <Border Margin="5" CornerRadius="4" Background="LightCoral">
+            <TextBlock Margin="5" FontSize="24" Text="Temperature Converter" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <Grid ShowGridLines="False" Margin="5"
+              ColumnDefinitions="120, 100"
+              RowDefinitions="Auto, Auto, Auto">
+            <Label Grid.Row="0" Grid.Column="0" Margin="10">Celsius</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Name="Celsius" Text="0"/>
+            <Label Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="Fahrenheit" Text="0" IsReadOnly="True"/>
+            
+            <Button Grid.Row="2" Grid.Column="1" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Margin="0 5"
+                    Click="Button_OnClick">Calculate</Button>
+        </Grid>
     </StackPanel>
 
 </Window>
