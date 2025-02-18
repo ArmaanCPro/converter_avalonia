@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 
@@ -12,7 +13,7 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private void Celsius_OnTextChanged(object? sender, TextChangedEventArgs e)
+    private async void Celsius_OnTextChanged(object? sender, TextChangedEventArgs e)
     {
         if (double.TryParse(Celsius.Text, out double C))
         {
@@ -21,11 +22,12 @@ public partial class MainWindow : Window
             // Temporarily detach the Fahrenheit TextChanged handler to avoid recursion
             Fahrenheit.TextChanged -= Fahrenheit_OnTextChanged;
             Fahrenheit.Text = F.ToString("0.0");
+            await Task.Delay(500);
             Fahrenheit.TextChanged += Fahrenheit_OnTextChanged;
         }
     }
 
-    private void Fahrenheit_OnTextChanged(object? sender, TextChangedEventArgs e)
+    private async void Fahrenheit_OnTextChanged(object? sender, TextChangedEventArgs e)
     {
         if (double.TryParse(Fahrenheit.Text, out double F))
         {
@@ -34,6 +36,7 @@ public partial class MainWindow : Window
             // Temporarily detach the Celsius TextChanged handler to avoid recursion
             Celsius.TextChanged -= Celsius_OnTextChanged;
             Celsius.Text = C.ToString("0.0");
+            await Task.Delay(500);
             Celsius.TextChanged += Celsius_OnTextChanged;
         }
     }
